@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+# Need to add lib to load path, so that egad can be executed from other
+# directories with other ruby versions.
+require 'pathname'
+parent_directory = Pathname.new(__FILE__).realpath.dirname.parent
+lib_directory = File.join(parent_directory, 'lib')
+$LOAD_PATH.unshift(lib_directory)
+
+require "egad"
+Egad::CLI.run(ARGV)
