@@ -2,7 +2,7 @@ module RuboCop
   module Cop
     module Migration
       class AddIndexNonConcurrently < Cop
-        MSG = 'Use `algorithm: :concurrently` to avoid locking database.'.freeze
+        MSG = 'Use `algorithm: :concurrently` to avoid locking table.'.freeze
 
         def_node_matcher :add_index_match, <<-PATTERN
           (send nil :add_index _ _ (hash $...))
