@@ -1,6 +1,6 @@
 module RuboCop
   module Cop
-    module Migrations
+    module Migration
       class AddIndexNonConcurrently < Cop
         MSG = 'Use `algorithm: :concurrently` to avoid locking database.'.freeze
 

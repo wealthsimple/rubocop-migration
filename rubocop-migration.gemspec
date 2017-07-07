@@ -1,17 +1,17 @@
 # coding: utf-8
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "rubocop/migrations/version"
+require "rubocop/migration/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "rubocop-migrations"
-  spec.version       = RuboCop::Migrations::VERSION
+  spec.name          = "rubocop-migration"
+  spec.version       = RuboCop::Migration::VERSION
   spec.authors       = ["Peter Graham"]
   spec.email         = ["peter@wealthsimple.com"]
 
   spec.summary       = %q{RuboCop extension for ActiveRecord migrations.}
   spec.description   = %q{RuboCop extension to catch common pitfalls in ActiveRecord migrations.}
-  spec.homepage      = "https://github.com/wealthsimple/rubocop-migrations"
+  spec.homepage      = "https://github.com/wealthsimple/rubocop-migration"
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
     f.match(%r{^(test|spec|features)/})

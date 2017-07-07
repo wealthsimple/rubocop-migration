@@ -1,5 +1,5 @@
 require "bundler/setup"
-require "rubocop-migrations"
+require "rubocop-migration"
 require "rspec/collection_matchers"
 require "rspec/its"
 require 'rubocop'

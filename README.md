@@ -1,4 +1,4 @@
-# rubocop-migrations
+# rubocop-migration
 
 RuboCop extension to catch common pitfalls in ActiveRecord migrations.
 
@@ -8,7 +8,7 @@ Add this line to your application's Gemfile and then execute `bundle`:
 
 ```ruby
 group :development do
-  gem 'rubocop-migrations'
+  gem 'rubocop-migration'
 end
 ```
 
@@ -17,7 +17,7 @@ end
 Configure RuboCop to load the extension in `.rubocop.yml`.
 
 ```yaml
-require: rubocop-migrations
+require: rubocop-migration
 ```
 
 ## Development

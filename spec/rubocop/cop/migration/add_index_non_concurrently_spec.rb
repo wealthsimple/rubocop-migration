@@ -1,4 +1,4 @@
-describe RuboCop::Cop::Migrations::AddIndexNonConcurrently do
+describe RuboCop::Cop::Migration::AddIndexNonConcurrently do
   subject(:cop) { described_class.new }
 
   before do
