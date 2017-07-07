@@ -8,7 +8,7 @@ describe RuboCop::Cop::Migration::AddIndexNonConcurrently do
   shared_examples "a non-concurrent index" do
     it "registers an offense" do
       expect(cop.offenses.size).to eq(1)
-      expect(cop.offenses.first.message).to eq("Use `algorithm: :concurrently` to avoid locking database.")
+      expect(cop.offenses.first.message).to eq("Use `algorithm: :concurrently` to avoid locking table.")
       expect(cop.highlights).to eq([source])
     end
   end
