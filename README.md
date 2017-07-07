@@ -1,4 +1,4 @@
-# rubocop-migration
+# rubocop-migration [![CircleCI](https://circleci.com/gh/wealthsimple/rubocop-migration.svg?style=svg)](https://circleci.com/gh/wealthsimple/rubocop-migration)
 
 RuboCop extension to catch common pitfalls in ActiveRecord migrations.
 
