@@ -1,5 +1,5 @@
 require "bundler/setup"
-require "egad"
+require "rubocop-migrations"
 require "rspec/collection_matchers"
 require "rspec/its"
 require 'rubocop'

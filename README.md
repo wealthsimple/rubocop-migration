@@ -1,6 +1,6 @@
-# egad
+# rubocop-migrations
 
-Identify common Ruby/Rails pitfalls in your codebase.
+RuboCop extension to catch common pitfalls in ActiveRecord migrations.
 
 ## Installation
 
@@ -8,13 +8,17 @@ Add this line to your application's Gemfile and then execute `bundle`:
 
 ```ruby
 group :development do
-  gem 'egad'
+  gem 'rubocop-migrations'
 end
 ```
 
 ## Usage
 
-TODO: Write usage instructions here
+Configure RuboCop to load the extension in `.rubocop.yml`.
+
+```yaml
+require: rubocop-migrations
+```
 
 ## Development
 

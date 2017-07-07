@@ -1,17 +1,17 @@
 # coding: utf-8
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "rubocop/egad/version"
+require "rubocop/migrations/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "egad"
-  spec.version       = RuboCop::Egad::VERSION
+  spec.name          = "rubocop-migrations"
+  spec.version       = RuboCop::Migrations::VERSION
   spec.authors       = ["Peter Graham"]
   spec.email         = ["peter@wealthsimple.com"]
 
-  spec.summary       = %q{Identify common Ruby/Rails pitfalls in your code.}
-  spec.description   = %q{Identify common Ruby/Rails pitfalls in your codebase.}
-  spec.homepage      = "https://github.com/wealthsimple/egad"
+  spec.summary       = %q{RuboCop extension for ActiveRecord migrations.}
+  spec.description   = %q{RuboCop extension to catch common pitfalls in ActiveRecord migrations.}
+  spec.homepage      = "https://github.com/wealthsimple/rubocop-migrations"
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
     f.match(%r{^(test|spec|features)/})
@@ -25,7 +25,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "activesupport", ">= 4"
 
-  spec.add_runtime_dependency 'rubocop', '>= 0.48.0'
+  spec.add_runtime_dependency "rubocop", ">= 0.48.0"
 
   spec.add_development_dependency "bundler", "~> 1.14"
   spec.add_development_dependency "rake", "~> 10.0"
