@@ -25,9 +25,8 @@ module RuboCop
           }
         PATTERN
 
-        # Ignore `:down` method since those
         def_node_matcher :migration_method_match, <<-PATTERN
-          (def {:change :up} args (begin $...))
+          (def {:change :down :up} args $...)
         PATTERN
 
         def_node_search :schema_statement_match, <<-PATTERN
@@ -38,23 +37,21 @@ module RuboCop
           ast = processed_source.ast
           return if !ast || !migration_class?(ast)
           ast.each_child_node do |child_node|
-            p child_node
-            # migration_method_nodes = migration_method_match(child_node)
-            # next unless migration_method_nodes
-            # migration_method_nodes.each do |node|
-            #   next unless node.send_type? && SCHEMA_STATEMENTS.include?(node.method_name)
-            #
-            #   method_name = node.method_name
-            #   # args =
-            #   p "statement:", node, method_name, node.arguments
-            # end
-
-            schema_statement_match(child_node) do |method_name, args|
-              p "ARGS", method_name, args
-            end
+            migration_methods = migration_method_match(child_node)
+            migration_methods&.each { |method_node| investigate_migration_method(method_node) }
           end
         end
 
+        private
+
+        def investigate_migration_method(method_node)
+          schema_statement_match(method_node) do |method_name, args_nodes|
+            # TODO: Better/safer way to do this?
+            args_source = "[#{args_nodes.map(&:source).join(', ')}]"
+            args = SafeRuby.eval(args_source)
+            p method_name, args
+          end
+        end
       end
     end
   end

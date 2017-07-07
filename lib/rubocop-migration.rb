@@ -4,6 +4,7 @@ require "active_record"
 # Only load a portion of strong_migrations
 require "strong_migrations/migration"
 require "rubocop"
+require "safe_ruby"
 
 require "rubocop/migration/version"
 require "rubocop/cop/migration/unsafe_operation"
