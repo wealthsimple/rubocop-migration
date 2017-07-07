@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "egad/version"
+require "rubocop/egad/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "egad"
-  spec.version       = Egad::VERSION
+  spec.version       = RuboCop::Egad::VERSION
   spec.authors       = ["Peter Graham"]
   spec.email         = ["peter@wealthsimple.com"]
 
@@ -23,11 +23,11 @@ Gem::Specification.new do |spec|
 
   spec.required_ruby_version = ">= 2.3.0"
 
-  spec.add_dependency "activesupport", "5.1.1"
-  spec.add_dependency "cri", "2.9.1"
-  spec.add_dependency "paint", "2.0.0"
+  spec.add_dependency "activesupport", ">= 4"
 
-  spec.add_development_dependency "bundler", "~> 1.15"
+  spec.add_runtime_dependency 'rubocop', '>= 0.48.0'
+
+  spec.add_development_dependency "bundler", "~> 1.14"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
   spec.add_development_dependency "rspec-its"

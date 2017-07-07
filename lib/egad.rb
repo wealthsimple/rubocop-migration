@@ -1,11 +1,11 @@
 require "active_support"
 require "active_support/core_ext"
-require "cri"
-require "find"
-require "paint"
+require "rubocop"
 
-require "egad/cli"
-require "egad/version"
+require "rubocop/egad/version"
+require "rubocop/cop/egad/add_index"
 
-module Egad
+module RuboCop
+  module Egad
+  end
 end
