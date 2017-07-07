@@ -12,3 +12,4 @@
 .rspec_status
 
 /vendor/rubocop
+*.gem
