@@ -34,7 +34,5 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## TODO
 
-- Identify non-concurrent indexes: https://robots.thoughtbot.com/how-to-create-postgres-indexes-concurrently-in
-  - Can also occur with `add_reference`: http://api.rubyonrails.org/v5.1.2/classes/ActiveRecord/ConnectionAdapters/SchemaStatements.html#method-i-add_reference
-- Identify changes to Gemfile without Gemfile.lock changes
-- Identify changes to `db/schema.rb` without new migrations
+https://www.braintreepayments.com/blog/safe-operations-for-high-volume-postgresql/
+http://leopard.in.ua/2016/09/20/safe-and-unsafe-operations-postgresql
