@@ -41,6 +41,30 @@ describe RuboCop::Cop::Migration::UnsafeOperation do
     it_behaves_like "valid code"
   end
 
+  context "a method that by default triggers a `safety_assured` warning in StrongMigrations" do
+    [
+      "add_column :users, :abc, :json",
+      "add_index :users, [:a, :b, :c, :d], algorithm: :concurrently",
+      "change_table :users",
+      "execute 'something'",
+      "remove_column :users, :abc",
+    ].each do |statement|
+      context "#{statement}" do
+        let(:source) do
+          <<-SOURCE
+          class AddSomeColumnToUsers < ActiveRecord::Migration
+            def change
+              #{statement}
+            end
+          end
+          SOURCE
+        end
+
+        it_behaves_like "valid code"
+      end
+    end
+  end
+
   context "add_index non-concurrently" do
     let(:source) do
       <<-SOURCE
