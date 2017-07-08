@@ -25,8 +25,11 @@ module RuboCop
           }
         PATTERN
 
+        # `down` migrations can be ignored as they should not be run in
+        # production environments per:
+        # https://github.com/ankane/strong_migrations/commit/fcfbcb4b1bef6a1ed9ec4808268ed0e684ec4389
         def_node_matcher :migration_method_match, <<-PATTERN
-          (def {:change :down :up} args $...)
+          (def {:change :up} args $...)
         PATTERN
 
         def_node_search :schema_statement_match, <<-PATTERN

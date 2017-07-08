@@ -38,6 +38,7 @@ module RuboCop
         super(message_key)
       end
 
+      # Strip large "WAIT!" ASCII art from the StrongMigrations error message.
       def strip_wait_message(error_message)
         error_message.split("\n\n", 2).last
       end
