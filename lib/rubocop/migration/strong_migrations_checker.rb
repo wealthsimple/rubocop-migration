@@ -3,8 +3,8 @@ module RuboCop
     class StrongMigrationsChecker
       include StrongMigrations::Migration
 
-      # StrongMigrations raises errors for potentially safe code, and relies on
-      # the user to add a safety_assured { } block to igore these warnings.
+      # StrongMigrations raises errors for potentially unsafe code, and relies
+      # on the user to add a `safety_assured { }` block to supress this warning.
       # These warnings are unsupported by rubocop-migration for now.
       SAFETY_ASSURED_WARNINGS = [
         :add_column_json,
