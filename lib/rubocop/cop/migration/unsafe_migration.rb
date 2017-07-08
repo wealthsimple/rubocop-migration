@@ -9,7 +9,7 @@ module RuboCop
           .freeze
         SCHEMA_STATEMENTS_PATTERN = SCHEMA_STATEMENTS.map { |s| ":#{s}" }.join(" ")
 
-        ERROR_NOTICE = "To ignore this warning, add `# rubocop:disable UnsafeMigration` above your code and `# rubocop:enable UnsafeMigration` below your code.".freeze
+        ERROR_NOTICE = "Ignore this warning by inserting `# rubocop:disable UnsafeMigration`\nabove your code and `# rubocop:enable UnsafeMigration` below code.".freeze
 
         # Match `ActiveRecord::Migration` and `ActiveRecord::Migration[5.0]`
         def_node_matcher :migration_class?, <<-PATTERN
