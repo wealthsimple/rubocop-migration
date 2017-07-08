@@ -1,4 +1,4 @@
-describe RuboCop::Cop::Migration::UnsafeOperation do
+describe RuboCop::Cop::Migration::UnsafeMigration do
   subject(:cop) { described_class.new }
 
   before do

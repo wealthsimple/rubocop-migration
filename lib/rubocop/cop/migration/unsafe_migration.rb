@@ -1,7 +1,7 @@
 module RuboCop
   module Cop
     module Migration
-      class UnsafeOperation < Cop
+      class UnsafeMigration < Cop
         # List of all public methods that can be used within a migration method,
         # like `add_index`, `rename_table`, etc.
         SCHEMA_STATEMENTS = ActiveRecord::ConnectionAdapters::SchemaStatements
@@ -9,7 +9,7 @@ module RuboCop
           .freeze
         SCHEMA_STATEMENTS_PATTERN = SCHEMA_STATEMENTS.map { |s| ":#{s}" }.join(" ")
 
-        ERROR_NOTICE = "To ignore this warning, add `# rubocop:disable UnsafeOperation` above and `# rubocop:enable UnsafeOperation` below your code."
+        ERROR_NOTICE = "To ignore this warning, add `# rubocop:disable UnsafeMigration` above and `# rubocop:enable UnsafeMigration` below your code."
 
         # Handle `ActiveRecord::Migration` and `ActiveRecord::Migration[5.0]`
         def_node_matcher :migration_class?, <<-PATTERN

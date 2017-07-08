@@ -8,7 +8,7 @@ require "rubocop"
 
 require "rubocop/migration/version"
 require "rubocop/migration/strong_migrations_checker"
-require "rubocop/cop/migration/unsafe_operation"
+require "rubocop/cop/migration/unsafe_migration"
 
 module RuboCop
   module Migration
