@@ -3,10 +3,11 @@ require "active_support/core_ext"
 require "active_record"
 # Only load a portion of strong_migrations
 require "strong_migrations/migration"
+require "strong_migrations/unsafe_migration"
 require "rubocop"
-require "safe_ruby"
 
 require "rubocop/migration/version"
+require "rubocop/migration/strong_migrations_checker"
 require "rubocop/cop/migration/unsafe_operation"
 
 module RuboCop

@@ -30,7 +30,7 @@ module RuboCop
         PATTERN
 
         def_node_search :schema_statement_match, <<-PATTERN
-          (send nil ${#{SCHEMA_STATEMENTS_PATTERN}} $...)
+          $(send nil ${#{SCHEMA_STATEMENTS_PATTERN}} $...)
         PATTERN
 
         def investigate(processed_source)
@@ -45,11 +45,14 @@ module RuboCop
         private
 
         def investigate_migration_method(method_node)
-          schema_statement_match(method_node) do |method_name, args_nodes|
+          schema_statement_match(method_node) do |statement_node, method_name, args_nodes|
             # TODO: Better/safer way to do this?
             args_source = "[#{args_nodes.map(&:source).join(', ')}]"
-            args = SafeRuby.eval(args_source)
-            p method_name, args
+            args = eval(args_source)
+
+            checker = RuboCop::Migration::StrongMigrationsChecker.new
+            error = checker.check_operation(method_name, *args)
+            add_offense(statement_node, :expression, error) if error
           end
         end
       end
