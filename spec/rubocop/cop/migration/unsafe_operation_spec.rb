@@ -27,12 +27,9 @@ describe RuboCop::Cop::Migration::UnsafeOperation do
       <<-SOURCE
       class AddSomeColumnToUsers < ActiveRecord::Migration[5.0]
         def change
-          # Some comment
-          if data_source_exists?
-            add_column :users, :some_id, :integer
-            add_index :users, :some_id, algorithm: :concurrently
-            add_reference :users, :something, index: false
-          end
+          add_column :users, :some_id, :integer
+          add_index :users, :some_id, algorithm: :concurrently
+          add_reference :users, :something, index: false
         end
       end
       SOURCE
