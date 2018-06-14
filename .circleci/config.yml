@@ -31,11 +31,11 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: rails-bundle-v2-{{ checksum "rubocop_migration.gemspec" }}-{{ checksum "Gemfile" }}
+          key: rails-bundle-v2-{{ checksum "rubocop-migration.gemspec" }}-{{ checksum "Gemfile" }}
       - *git_clone_rubocop
       - *bundle_install
       - save_cache:
-          key: rails-bundle-v2-{{ checksum "rubocop_migration.gemspec" }}-{{ checksum "Gemfile" }}
+          key: rails-bundle-v2-{{ checksum "rubocop-migration.gemspec" }}-{{ checksum "Gemfile" }}
           paths:
             - vendor/bundle
       - *rspec
