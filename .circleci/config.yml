@@ -1,0 +1,51 @@
+# These are the default attributes used for all jobs in our workflow
+defaults: &defaults
+  working_directory: ~/repo
+  docker:
+    - image: wealthsimple/ruby:2.3.0-node-docker
+      environment:
+        RAILS_ENV: test
+        RACK_ENV: test
+
+# These are common snippets that are referenced in multiple workflows
+references:
+  bundle_install: &bundle_install
+    run:
+      name: bundle install
+      command: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs=4 --retry=3
+
+  git_clone_rubocop: &git_clone_rubocop
+    run:
+      name: git clone rubocop
+      command: git clone --depth 1 git://github.com/bbatsov/rubocop.git vendor/rubocop
+
+  rspec: &rspec
+    run:
+      name: rspec
+      command: bundle exec rspec --format documentation --color --require spec_helper --format RspecJunitFormatter --out /tmp/circle-junit.vcO5DTY/rspec/rspec.xml spec
+
+version: 2
+jobs:
+  checkout_and_bundle:
+    <<: *defaults
+    steps:
+      - checkout
+      - restore_cache:
+          key: rails-bundle-v2-{{ checksum "rubocop_migration.gemspec" }}-{{ checksum "Gemfile" }}
+      - *git_clone_rubocop
+      - *bundle_install
+      - save_cache:
+          key: rails-bundle-v2-{{ checksum "rubocop_migration.gemspec" }}-{{ checksum "Gemfile" }}
+          paths:
+            - vendor/bundle
+      - *rspec
+      - store_test_results:
+          path: test_results
+
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - checkout_and_bundle:
+          context: wealthsimple
+
