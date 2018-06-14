@@ -1,6 +1,0 @@
-machine:
-  ruby:
-    version: 2.3.0
-dependencies:
-  pre:
-    - git clone --depth 1 git://github.com/bbatsov/rubocop.git vendor/rubocop
