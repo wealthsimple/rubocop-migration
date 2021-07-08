@@ -1,0 +1,11 @@
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: rubocop-migration
+  description: 🚓 RuboCop extension to catch unsafe operations in ActiveRecord migrations
+  tags:
+    - ruby
+spec:
+  type: other
+  lifecycle: production
